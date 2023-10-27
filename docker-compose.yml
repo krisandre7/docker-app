@@ -1,0 +1,30 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo1
+      - mongo2
+    ports:
+      - "3000:3000"
+
+  mongo1:
+    image: mongo
+    container_name: mongo1
+    ports:
+      - "27017:27017"
+    networks:
+      - backend-network
+
+  mongo2:
+    image: mongo
+    container_name: mongo2
+    ports:
+      - "27018:27017"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
