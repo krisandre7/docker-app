@@ -1,14 +1,14 @@
 version: '3'
 services:
-  node-app:
+  backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     depends_on:
       - mongo1
       - mongo2
     ports:
-      - "3000:3000"
+      - "3001:3001"
 
   mongo1:
     image: mongo
